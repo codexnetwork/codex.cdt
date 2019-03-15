@@ -40,7 +40,7 @@
 	BUILD_DIR="${PWD}/build"
 	CMAKE_BUILD_TYPE=Release
 	TIME_BEGIN=$( date -u +%s )
-   INSTALL_PREFIX="/usr/local/eosio.cdt"
+   INSTALL_PREFIX="/usr/local/forceio.cdt"
 	VERSION=1.2
 
 	txtbld=$(tput bold)
@@ -49,31 +49,31 @@
 
    create_symlink() {
       pushd /usr/local/bin &> /dev/null
-      ln -sf ../eosio.cdt/bin/$1 $2
+      ln -sf ../forceio.cdt/bin/$1 $2
       popd &> /dev/null
    }
 
    install_symlinks() {
-		printf "\\n\\tInstalling EOSIO.CDT Binary Symlinks\\n\\n"
-      create_symlink "llvm-ranlib eosio-ranlib"
-      create_symlink "llvm-ar eosio-ar"
-      create_symlink "llvm-objdump eosio-objdump"
-      create_symlink "llvm-readelf eosio-readelf"
-      create_symlink "eosio-cc eosio-cc"
-      create_symlink "eosio-cpp eosio-cpp"
-      create_symlink "eosio-ld eosio-ld"
-      create_symlink "eosio-pp eosio-pp"
-      create_symlink "eosio-init eosio-init"
-      create_symlink "eosio-abigen eosio-abigen"
-      create_symlink "eosio-abidiff eosio-abidiff"
-      create_symlink "eosio-wasm2wast eosio-wasm2wast"
-      create_symlink "eosio-wast2wasm eosio-wast2wasm"
+		printf "\\n\\tInstalling FORCEIO.CDT Binary Symlinks\\n\\n"
+      create_symlink "llvm-ranlib forceio-ranlib"
+      create_symlink "llvm-ar forceio-ar"
+      create_symlink "llvm-objdump forceio-objdump"
+      create_symlink "llvm-readelf forceio-readelf"
+      create_symlink "forceio-cc forceio-cc"
+      create_symlink "forceio-cpp forceio-cpp"
+      create_symlink "forceio-ld forceio-ld"
+      create_symlink "forceio-pp forceio-pp"
+      create_symlink "forceio-init forceio-init"
+      create_symlink "forceio-abigen forceio-abigen"
+      create_symlink "forceio-abidiff forceio-abidiff"
+      create_symlink "forceio-wasm2wast forceio-wasm2wast"
+      create_symlink "forceio-wast2wasm forceio-wast2wasm"
    }
    
    create_cmake_symlink() {
-      mkdir -p /usr/local/lib/cmake/eosio.cdt
-      pushd /usr/local/lib/cmake/eosio.cdt &> /dev/null
-      ln -sf ../../../eosio.cdt/lib/cmake/eosio.cdt/$1 $1
+      mkdir -p /usr/local/lib/cmake/forceio.cdt
+      pushd /usr/local/lib/cmake/forceio.cdt &> /dev/null
+      ln -sf ../../../forceio.cdt/lib/cmake/forceio.cdt/$1 $1
       popd &> /dev/null
    }
 	if [ ! -d "${BUILD_DIR}" ]; then
@@ -89,13 +89,13 @@
    
 	if ! make install
 	then
-		printf "\\n\\t>>>>>>>>>>>>>>>>>>>> MAKE installing EOSIO has exited with the above error.\\n\\n"
+		printf "\\n\\t>>>>>>>>>>>>>>>>>>>> MAKE installing FORCEIO has exited with the above error.\\n\\n"
 		exit -1
 	fi
    popd &> /dev/null 
 
    install_symlinks   
-   create_cmake_symlink "eosio.cdt-config.cmake"
+   create_cmake_symlink "forceio.cdt-config.cmake"
 
    printf "\n${bldred}\t      ___           ___           ___                       ___\n"
    printf "\t     /  /\\         /  /\\         /  /\\        ___          /  /\\ \n"

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(eosio_cdt)
+project(forceio_cdt)
 
 find_program(SCCACHE_FOUND sccache)
 if (SCCACHE_FOUND)
@@ -28,8 +28,8 @@ else()
 endif()
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/eosio.cdt")
-   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/eosio.cdt")
+   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/forceio.cdt")
+   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/forceio.cdt")
 elseif ("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr/local")
    message(WARNING "CMAKE_INSTALL_PREFIX is explicitly set to /usr/local. This is not recommended.")
 endif()
@@ -71,10 +71,10 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/ricardeos/ricardeos.py ${CMAKE_BINARY
 install(FILES ${CMAKE_BINARY_DIR}/scripts/ricardeos.py DESTINATION ${CMAKE_INSTALL_PREFIX}/scripts)
 
 # section for package construction
-set(VENDOR "block.one")
-set(PROJECT_NAME "eosio.cdt")
-set(DESC "Toolchain and supporting tools for the EOS.IO platform")
-set(URL "https://github.com/eosio/eosio.cdt")
+set(VENDOR "eosforce")
+set(PROJECT_NAME "forceio.cdt")
+set(DESC "Toolchain and supporting tools for the FORCEIO platform")
+set(URL "https://github.com/eosforce/forceio.cdt")
 set(EMAIL "support@block.one")
 configure_file(${CMAKE_SOURCE_DIR}/scripts/generate_package.sh.in ${CMAKE_BINARY_DIR}/packages/generate_package.sh @ONLY)
 configure_file(${CMAKE_SOURCE_DIR}/scripts/generate_deb.sh ${CMAKE_BINARY_DIR}/packages/generate_deb.sh COPYONLY)
