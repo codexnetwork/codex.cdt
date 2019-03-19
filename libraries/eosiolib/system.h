@@ -85,6 +85,20 @@ extern "C" {
       return (uint32_t)( current_time() / 1000000 );
    }
 
+   /**
+   *  Get Current Block Num
+   *
+   *  @return curr block num for this action
+   */
+   uint32_t current_block_num();
+
+   /**
+    *  Return if a function is open in curr block num
+    *  @param func_code - func code
+    *  @return - 0 to not open, 1 to has open
+    */
+   int is_func_open( uint64_t func_code );
+
 #ifdef __cplusplus
 }
 #endif

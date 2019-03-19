@@ -31,6 +31,12 @@ extern "C" {
    void set_resource_limits( capi_name account, int64_t ram_bytes, int64_t net_weight, int64_t cpu_weight );
 
    /**
+   * @brief Set the account ram limit need to check
+   * @param account - name of the account whose resource limit to be set
+   */
+   void set_need_check_ram_limit( capi_name account );
+
+   /**
     * Proposes a schedule change
     *
     * @note Once the block that contains the proposal becomes irreversible, the schedule is promoted to "pending" automatically. Once the block that promotes the schedule is irreversible, the schedule will become "active"

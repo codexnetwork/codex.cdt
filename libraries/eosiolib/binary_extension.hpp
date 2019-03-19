@@ -1,6 +1,9 @@
 #pragma once
 #include "print.hpp"
 
+// TODO By FanYang FORCEIO now have a diff extension imp,
+//  but it will be change to same as eosio, so this not change right now
+
  namespace eosio {
     /**
     *  Container to hold a binary payload for an extension
