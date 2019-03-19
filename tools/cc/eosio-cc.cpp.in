@@ -13,7 +13,7 @@
 using namespace clang::tooling;
 using namespace llvm;
 
-#define COMPILER_NAME "eosio-cc"
+#define COMPILER_NAME "forceio-cc"
 #include <compiler_options.hpp>
 
 int main(int argc, const char **argv) {
@@ -42,7 +42,7 @@ int main(int argc, const char **argv) {
   // then link
   //
   if (opts.link) {
-     if (!eosio::cdt::environment::exec_subprogram("eosio-ld", opts.ld_options))
+     if (!eosio::cdt::environment::exec_subprogram("forceio-ld", opts.ld_options))
         return -1;
 
      if ( !llvm::sys::fs::exists( opts.output_fn ) ) {
@@ -58,7 +58,7 @@ int main(int argc, const char **argv) {
       for ( auto res : opts.abigen_resources )
          opts.abigen_options.emplace(opts.abigen_options.begin(), res);
 
-      if (!eosio::cdt::environment::exec_subprogram("eosio-abigen", opts.abigen_options))
+      if (!eosio::cdt::environment::exec_subprogram("forceio-abigen", opts.abigen_options))
          return -1;
   }
   return 0;

@@ -40,3 +40,11 @@ build/*
 \.idea/
 
 cmake-build-debug/
+
+examples/hello/build/
+
+cmake-build-release/
+
+examples/hello/build/
+examples/multi_index_example/build/
+examples/send_inline/build/
