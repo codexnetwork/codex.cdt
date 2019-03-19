@@ -1,6 +1,6 @@
 #! /bin/bash
 
-printf "\t=========== Building eosio.cdt ===========\n\n"
+printf "\t=========== Building forceio.cdt ===========\n\n"
 
 RED='\033[0;31m'
 NC='\033[0m'
@@ -94,7 +94,7 @@ if [ -z "$CMAKE" ]; then
   CMAKE=$( command -v cmake )
 fi
 
-"$CMAKE" -DCMAKE_INSTALL_PREFIX=/usr/local/eosio.cdt ../
+"$CMAKE" -DCMAKE_INSTALL_PREFIX=/usr/local/forceio.cdt ../
 if [ $? -ne 0 ]; then
    exit -1;
 fi

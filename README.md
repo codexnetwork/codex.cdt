@@ -22,18 +22,18 @@ $ brew remove eosio.cdt
 ```
 #### Debian Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.5.0/eosio.cdt_1.5.0-1_amd64.deb
-$ sudo apt install ./eosio.cdt_1.5.0-1_amd64.deb
+$ wget https://github.com/eosio/forceio.cdt/releases/download/v1.5.0/forceio.cdt_1.5.0-1_amd64.deb
+$ sudo apt install ./forceio.cdt_1.5.0-1_amd64.deb
 ```
 #### Debian Package Uninstall
 ```sh
-$ sudo apt remove eosio.cdt
+$ sudo apt remove forceio.cdt
 ```
 
 #### Fedora RPM Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.5.0/eosio.cdt-1.5.0-1.fedora-x86_64.rpm
-$ sudo yum install ./eosio.cdt-1.5.0-1.fedora-x86_64.rpm
+$ wget https://github.com/eosio/forceio.cdt/releases/download/v1.5.0/forceio.cdt-1.5.0-1.fedora-x86_64.rpm
+$ sudo yum install ./forceio.cdt-1.5.0-1.fedora-x86_64.rpm
 ```
 
 #### Fedora RPM Package Uninstall

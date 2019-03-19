@@ -40,7 +40,7 @@ using jsoncons::ojson;
 
 struct abigen_exception : public std::exception {
    virtual const char* what() const throw() {
-      return "eosio.abigen fatal error";
+      return "forceio.abigen fatal error";
    }
 } abigen_ex;
 
@@ -290,7 +290,7 @@ class abigen : public generation_utils {
 
    std::string generate_json_comment() {
       std::stringstream ss;
-      ss << "This file was generated with eosio-abigen.";
+      ss << "This file was generated with forceio-abigen.";
       ss << " DO NOT EDIT ";
       auto t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
       ss << std::ctime(&t);
@@ -528,9 +528,9 @@ class EosioRecordMatcher : public MatchFinder::MatchCallback {
 int main(int argc, const char **argv) {
 
    cl::SetVersionPrinter([](llvm::raw_ostream& os) {
-        os << "eosio-abigen version " << "${VERSION_FULL}" << "\n";
+        os << "forceio-abigen version " << "${VERSION_FULL}" << "\n";
   });
-   cl::OptionCategory cat("eosio-abigen", "generates an abi from C++ project input");
+   cl::OptionCategory cat("forceio-abigen", "generates an abi from C++ project input");
 
    cl::opt<std::string> abidir(
     "output",
