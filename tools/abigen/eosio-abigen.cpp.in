@@ -453,7 +453,12 @@ class abigen : public generation_utils {
       for ( auto v : _abi.variants ) {
          o["variants"].push_back(variant_to_json( v ));
       }
-      o["abi_extensions"]     = ojson::array();
+
+      // TODO By FanYang this will be changed as extensions will
+      ojson exts;
+      exts["datas"] = ojson::array();
+      o["abi_extensions"] = exts;
+
       return o;
    }
 
