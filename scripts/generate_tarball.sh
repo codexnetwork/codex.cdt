@@ -47,14 +47,14 @@ create_symlink() {
    popd &> /dev/null
 }
 
-create_symlink "eosio-cc eosio-cc"
-create_symlink "eosio-cpp eosio-cpp"
-create_symlink "eosio-ld eosio-ld"
-create_symlink "eosio-pp eosio-pp"
-create_symlink "eosio-init eosio-init"
-create_symlink "eosio-abigen eosio-abigen"
-create_symlink "eosio-wasm2wast eosio-wasm2wast"
-create_symlink "eosio-wast2wasm eosio-wast2wasm"
+create_symlink "forceio-cc forceio-cc"
+create_symlink "forceio-cpp forceio-cpp"
+create_symlink "forceio-ld forceio-ld"
+create_symlink "forceio-pp forceio-pp"
+create_symlink "forceio-init forceio-init"
+create_symlink "forceio-abigen forceio-abigen"
+create_symlink "forceio-wasm2wast forceio-wasm2wast"
+create_symlink "forceio-wast2wasm forceio-wast2wasm"
 
 tar -cvzf $NAME ./${PREFIX}/*
 rm -r ${PREFIX}

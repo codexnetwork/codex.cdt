@@ -34,7 +34,7 @@ int main(int argc, const char **argv) {
    Options opts = CreateOptions();
 
    if (opts.abigen) {
-       llvm::outs() << "Warning, ABI generation is only available with eosio-abigen or eosio-cpp\n";
+       llvm::outs() << "Warning, ABI generation is only available with forceio-abigen or forceio-cpp\n";
    }
    
    std::vector<std::string> outputs;
@@ -68,7 +68,7 @@ int main(int argc, const char **argv) {
       for (auto input : outputs) {
          new_opts.insert(new_opts.begin(), std::string(" ")+input+" ");
       }
-      if (!eosio::cdt::environment::exec_subprogram("eosio-ld", new_opts)) {
+      if (!eosio::cdt::environment::exec_subprogram("forceio-ld", new_opts)) {
          for (auto input : outputs) {
             llvm::sys::fs::remove(input);
          }
