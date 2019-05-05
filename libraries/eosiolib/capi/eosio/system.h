@@ -75,6 +75,13 @@ void eosio_exit( int32_t code );
  */
 __attribute__((eosio_wasm_import))
 uint64_t  current_time();
+/**
+*  Get Current Block Num
+*
+*  @return curr block num for this action
+*/
+__attribute__((eosio_wasm_import))
+uint32_t  current_block_num();
 
 #ifdef __cplusplus
 }

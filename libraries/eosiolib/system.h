@@ -93,6 +93,7 @@ extern "C" {
    *
    *  @return curr block num for this action
    */
+   __attribute__((eosio_wasm_import))
    uint32_t current_block_num();
 
    /**
