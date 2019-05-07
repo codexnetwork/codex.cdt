@@ -1,4 +1,4 @@
-list( APPEND CMAKE_MODULE_PATH ${EOSIO_CDT_BIN} )
+list( APPEND CMAKE_MODULE_PATH ${FORCEIO_CDT_BIN} )
 include( EosioCDTMacros )
 
 add_native_executable( asset_tests asset_tests.cpp )
