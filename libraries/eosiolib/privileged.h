@@ -38,6 +38,7 @@ extern "C" {
    * @brief Set the account ram limit need to check
    * @param account - name of the account whose resource limit to be set
    */
+   __attribute__((eosio_wasm_import))
    void set_need_check_ram_limit( capi_name account );
 
    /**

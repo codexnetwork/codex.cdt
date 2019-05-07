@@ -334,6 +334,9 @@ extern "C" {
    uint32_t current_block_num() {
       return intrinsics::get().call<intrinsics::current_block_num>();
    }
+   void set_need_check_ram_limit( capi_name account ) {
+      return intrinsics::get().call<intrinsics::set_need_check_ram_limit>(account);
+   }
 
 
    // softfloat
