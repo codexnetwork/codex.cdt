@@ -31,6 +31,9 @@ namespace eosio {
 
          __attribute__((eosio_wasm_import))
          void set_need_check_ram_limit( uint64_t account );
+
+         __attribute__((eosio_wasm_import))
+         uint32_t  current_block_num();
       }
 
    }
@@ -243,4 +246,12 @@ namespace eosio {
       internal_use_do_not_use::set_privileged( account.value, is_priv );
    }
 
+   /**
+    *  Returns the time in microseconds from 1970 of the current block
+    *
+    *  @return time in microseconds from 1970 of the current block
+    */
+   inline uint32_t current_block_num() {
+      return internal_use_do_not_use::current_block_num();
+   }
 }
