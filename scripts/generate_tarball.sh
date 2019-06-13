@@ -47,14 +47,14 @@ create_symlink() {
    popd &> /dev/null
 }
 
-create_symlink "forceio-cc forceio-cc"
-create_symlink "forceio-cpp forceio-cpp"
-create_symlink "forceio-ld forceio-ld"
-create_symlink "forceio-pp forceio-pp"
-create_symlink "forceio-init forceio-init"
-create_symlink "forceio-abigen forceio-abigen"
-create_symlink "forceio-wasm2wast forceio-wasm2wast"
-create_symlink "forceio-wast2wasm forceio-wast2wasm"
+create_symlink "codex-cc codex-cc"
+create_symlink "codex-cpp codex-cpp"
+create_symlink "codex-ld codex-ld"
+create_symlink "codex-pp codex-pp"
+create_symlink "codex-init codex-init"
+create_symlink "codex-abigen codex-abigen"
+create_symlink "codex-wasm2wast codex-wasm2wast"
+create_symlink "codex-wast2wasm codex-wast2wasm"
 
 tar -cvzf $NAME ./${PREFIX}/*
 rm -r ${PREFIX}

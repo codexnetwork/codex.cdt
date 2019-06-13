@@ -27,7 +27,7 @@ using namespace clang::tooling;
 using namespace llvm;
 
 #define CPP_COMP 1
-#define COMPILER_NAME "forceio-cpp"
+#define COMPILER_NAME "codex-cpp"
 #include <compiler_options.hpp>
 
 #include <set>
@@ -109,7 +109,7 @@ namespace eosio { namespace cdt {
 
 void generate(const std::vector<std::string>& base_options, std::string input, std::string contract_name, const std::vector<std::string>& resource_paths, bool abigen) {
    std::vector<std::string> options;
-   options.push_back("forceio-cpp");
+   options.push_back("codex-cpp");
    options.push_back(input); // don't remove oddity of CommonOptionsParser?
    options.push_back(input);
    options.push_back("--");
@@ -229,7 +229,7 @@ int main(int argc, const char **argv) {
          new_opts.insert(new_opts.begin(), std::string(" ")+input+" ");
       }
    
-      if (!eosio::cdt::environment::exec_subprogram("forceio-ld", new_opts)) {
+      if (!eosio::cdt::environment::exec_subprogram("codex-ld", new_opts)) {
          for (auto input : outputs) {
             llvm::sys::fs::remove(input);
          }

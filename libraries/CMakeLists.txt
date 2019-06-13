@@ -1,6 +1,6 @@
 project(eosio_libraries)
 
-list(APPEND CMAKE_MODULE_PATH ${FORCEIO_CDT_BIN})
+list(APPEND CMAKE_MODULE_PATH ${CODEX_CDT_BIN})
 include(EosioCDTMacros)
 
 set(CMAKE_C_FLAGS " ${CMAKE_C_FLAGS} -O3 -Wall ")

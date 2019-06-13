@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(forceio_cdt)
+project(codex_cdt)
 
 find_program(SCCACHE_FOUND sccache)
 if (SCCACHE_FOUND)
@@ -28,8 +28,8 @@ else()
 endif()
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/forceio.cdt")
-   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/forceio.cdt")
+   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/codex.cdt")
+   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/codex.cdt")
 elseif ("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr/local")
    message(WARNING "CMAKE_INSTALL_PREFIX is explicitly set to /usr/local. This is not recommended.")
 endif()
@@ -43,22 +43,22 @@ set(WASM_SDK_BUILD true)
 
 ### Configure the EosioWasmToolchain.cmakes
 set(CDT_ROOT_DIR ${CMAKE_BINARY_DIR})
-configure_file(${CMAKE_SOURCE_DIR}/modules/forceio.cdt-config.cmake ${CMAKE_BINARY_DIR}/lib/cmake/forceio.cdt/forceio.cdt-config.cmake @ONLY)
-configure_file(${CMAKE_SOURCE_DIR}/modules/EosioCDTMacros.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/forceio.cdt/EosioCDTMacros.cmake @ONLY)
-configure_file(${CMAKE_SOURCE_DIR}/modules/EosioWasmToolchain.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/forceio.cdt/EosioWasmToolchain.cmake @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/modules/codex.cdt-config.cmake ${CMAKE_BINARY_DIR}/lib/cmake/codex.cdt/codex.cdt-config.cmake @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/modules/EosioCDTMacros.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/codex.cdt/EosioCDTMacros.cmake @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/modules/EosioWasmToolchain.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/codex.cdt/EosioWasmToolchain.cmake @ONLY)
 
 set(CDT_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
-configure_file(${CMAKE_SOURCE_DIR}/modules/forceio.cdt-config.cmake ${CMAKE_BINARY_DIR}/modules/forceio.cdt-config.cmake @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/modules/forceio.cdt-config.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/forceio.cdt)
+configure_file(${CMAKE_SOURCE_DIR}/modules/codex.cdt-config.cmake ${CMAKE_BINARY_DIR}/modules/codex.cdt-config.cmake @ONLY)
+install(FILES ${CMAKE_BINARY_DIR}/modules/codex.cdt-config.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/codex.cdt)
 configure_file(${CMAKE_SOURCE_DIR}/modules/EosioCDTMacros.cmake.in ${CMAKE_BINARY_DIR}/modules/EosioCDTMacros.cmake @ONLY)
 configure_file(${CMAKE_SOURCE_DIR}/modules/EosioWasmToolchain.cmake.in ${CMAKE_BINARY_DIR}/modules/EosioWasmToolchain.cmake @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/modules/EosioWasmToolchain.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/forceio.cdt)
-install(FILES ${CMAKE_BINARY_DIR}/modules/EosioCDTMacros.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/forceio.cdt)
+install(FILES ${CMAKE_BINARY_DIR}/modules/EosioWasmToolchain.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/codex.cdt)
+install(FILES ${CMAKE_BINARY_DIR}/modules/EosioCDTMacros.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/codex.cdt)
 
 set(CDT_ROOT_DIR "_PREFIX_")
 configure_file(${CMAKE_SOURCE_DIR}/modules/EosioCDTMacros.cmake.in ${CMAKE_BINARY_DIR}/modules/EosioCDTMacrosPackage.cmake @ONLY)
 configure_file(${CMAKE_SOURCE_DIR}/modules/EosioWasmToolchain.cmake.in ${CMAKE_BINARY_DIR}/modules/EosioWasmToolchainPackage.cmake @ONLY)
-configure_file(${CMAKE_SOURCE_DIR}/modules/forceio.cdt-config.cmake ${CMAKE_BINARY_DIR}/modules/forceio.cdt-config.cmake.package @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/modules/codex.cdt-config.cmake ${CMAKE_BINARY_DIR}/modules/codex.cdt-config.cmake.package @ONLY)
 
 include(modules/LibrariesExternalProject.txt)
 
@@ -71,11 +71,11 @@ configure_file(${CMAKE_SOURCE_DIR}/scripts/ricardeos/ricardeos.py ${CMAKE_BINARY
 install(FILES ${CMAKE_BINARY_DIR}/scripts/ricardeos.py DESTINATION ${CMAKE_INSTALL_PREFIX}/scripts)
 
 # section for package construction
-set(VENDOR "eosforce")
-set(PROJECT_NAME "forceio.cdt")
-set(DESC "Toolchain and supporting tools for the FORCEIO platform")
-set(URL "https://github.com/eosforce/forceio.cdt")
-set(EMAIL "support@block.one")
+set(VENDOR "codex")
+set(PROJECT_NAME "codex.cdt")
+set(DESC "Toolchain and supporting tools for the codex platform")
+set(URL "https://github.com/codexnetwork/codex.cdt")
+set(EMAIL "support@codex.network")
 configure_file(${CMAKE_SOURCE_DIR}/scripts/generate_package.sh.in ${CMAKE_BINARY_DIR}/packages/generate_package.sh @ONLY)
 configure_file(${CMAKE_SOURCE_DIR}/scripts/generate_deb.sh ${CMAKE_BINARY_DIR}/packages/generate_deb.sh COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/scripts/generate_bottle.sh ${CMAKE_BINARY_DIR}/packages/generate_bottle.sh COPYONLY)
@@ -87,7 +87,7 @@ configure_file(${CMAKE_SOURCE_DIR}/eosio_llvm/LICENSE.TXT ${CMAKE_BINARY_DIR}/li
 configure_file(${CMAKE_SOURCE_DIR}/libraries/boost/boost.license ${CMAKE_BINARY_DIR}/licenses/boost.license COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/tools/external/wabt/LICENSE ${CMAKE_BINARY_DIR}/licenses/wabt.license COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/tools/jsoncons/LICENSE ${CMAKE_BINARY_DIR}/licenses/jsoncons.license COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/LICENSE ${CMAKE_BINARY_DIR}/licenses/eosio.cdt.license COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/LICENSE ${CMAKE_BINARY_DIR}/licenses/codex.cdt.license COPYONLY)
 
 include(modules/TestsExternalProject.txt)
 

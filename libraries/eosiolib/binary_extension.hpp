@@ -1,7 +1,6 @@
 #pragma once
 #include "print.hpp"
 
-// TODO By FanYang FORCEIO now have a diff extension imp,
 //  but it will be change to same as eosio, so this not change right now
 
 #warning "<eosiolib/binary_extension.hpp> is deprecated use <eosio/binary_extension.hpp>"

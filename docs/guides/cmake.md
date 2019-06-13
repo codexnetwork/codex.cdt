@@ -10,7 +10,7 @@ In `CMakeLists.txt`:
 cmake_minimum_required(VERSION 3.5)
 project(test_example VERSION 1.0.0)
 
-find_package(forceio.cdt)
+find_package(codex.cdt)
 
 add_contract( test test test.cpp )
 ```
