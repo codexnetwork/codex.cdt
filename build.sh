@@ -1,6 +1,6 @@
 #! /bin/bash
 
-printf "\t=========== Building forceio.cdt ===========\n\n"
+printf "\t=========== Building codex.cdt ===========\n\n"
 
 RED='\033[0;31m'
 NC='\033[0m'
@@ -94,7 +94,7 @@ if [ -z "$CMAKE" ]; then
   CMAKE=$( command -v cmake )
 fi
 
-"$CMAKE" -DCMAKE_INSTALL_PREFIX=/usr/local/forceio.cdt ../
+"$CMAKE" -DCMAKE_INSTALL_PREFIX=/usr/local/codex.cdt ../
 if [ $? -ne 0 ]; then
    exit -1;
 fi
@@ -104,17 +104,12 @@ if [ $? -ne 0 ]; then
 fi
 popd &> /dev/null
 
-printf "\n${bldred}\t      ___           ___           ___           ___           ___                       ___     \n"
-printf "\t     /\  \         /\  \         /\  \         /\  \         /\  \          ___        /\  \    \n"
-printf "\t    /::\  \       /::\  \       /::\  \       /::\  \       /::\  \        /\  \      /::\  \   \n"
-printf "\t   /:/\:\  \     /:/\:\  \     /:/\:\  \     /:/\:\  \     /:/\:\  \       \:\  \    /:/\:\  \  \n"
-printf "\t  /::\~\:\  \   /:/  \:\  \   /::\~\:\  \   /:/  \:\  \   /::\~\:\  \      /::\__\  /:/  \:\  \ \n"
-printf "\t /:/\:\ \:\__\ /:/__/ \:\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/\:\ \:\__\  __/:/\/__/ /:/__/ \:\__\\n"
-printf "\t \/__\:\ \/__/ \:\  \ /:/  / \/_|::\/:/  / \:\  \  \/__/ \:\~\:\ \/__/ /\/:/  /    \:\  \ /:/  /\n"
-printf "\t      \:\__\    \:\  /:/  /     |:|::/  /   \:\  \        \:\ \:\__\   \::/__/      \:\  /:/  / \n"
-printf "\t       \/__/     \:\/:/  /      |:|\/__/     \:\  \        \:\ \/__/    \:\__\       \:\/:/  /  \n"
-printf "\t                  \::/  /       |:|  |        \:\__\        \:\__\       \/__/        \::/  /   \n"
-printf "\t                   \/__/         \|__|         \/__/         \/__/                     \/__/    \n${txtrst}"
+printf "\n\n${bldred}\t   __________  ____  _______  __   ________   \n"
+printf "\t  / ____/ __ \/ __ \/ ____/ |/ /  /  _/ __ \  \n"
+printf "\t / /   / / / / / / / __/  |   /   / // / / /  \n"
+printf "\t/ /___/ /_/ / /_/ / /___ /   |_ _/ // /_/ /   \n"
+printf "\t\____/\____/_____/_____//_/|_(_)___/\____/    \n"
+printf "\t                                              \n${txtrst}"
 
 printf "\\tFor more information:\\n"
-printf "\\tEOSIO website: https://www.eosforce.io/\\n"
+printf "\\tCODEX website: https://www.codex.network/\\n"

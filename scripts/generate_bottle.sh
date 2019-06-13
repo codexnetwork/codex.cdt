@@ -36,7 +36,7 @@ echo "class EosioCdt < Formula
 
    homepage \"${URL}\"
    revision 0
-   url \"https://github.com/eosio/forceio.cdt/archive/v${VERSION}.tar.gz\"
+   url \"https://github.com/eosio/codex.cdt/archive/v${VERSION}.tar.gz\"
    version \"${VERSION}\"
    
    option :universal
@@ -55,13 +55,13 @@ echo "class EosioCdt < Formula
    depends_on :arch =>  :intel
   
    bottle do
-      root_url \"https://github.com/eosio/forceio.cdt/releases/download/v${VERSION}\"
+      root_url \"https://github.com/eosio/codex.cdt/releases/download/v${VERSION}\"
       sha256 \"${hash}\" => :${MAC_VERSION}
    end
    def install
       raise \"Error, only supporting binary packages at this time\"
    end
 end
-__END__" &> forceio.cdt.rb
+__END__" &> codex.cdt.rb
 
 rm -r ${PROJECT}

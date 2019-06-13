@@ -66,22 +66,22 @@ struct project {
                                  "Stub for hi action's ricardian contract";
 
    const std::string cmake = "project(@)\n\n"
-                             "set(EOSIO_WASM_OLD_BEHAVIOR \"Off\")\n"
-                             "find_package(forceio.cdt)\n\n"
+                             "set(CODEX_WASM_OLD_BEHAVIOR \"Off\")\n"
+                             "find_package(codex.cdt)\n\n"
                              "add_contract( @ @ @.cpp )\n"
                              "target_include_directories( @ PUBLIC ${CMAKE_SOURCE_DIR}/../include )\n"
                              "target_ricardian_directory( @ ${CMAKE_SOURCE_DIR}/../ricardian )";
 
    const std::string cmake_extern = "include(ExternalProject)\n"
                                     "# if no cdt root is given use default path\n"
-                                    "if(FORCEIO_CDT_ROOT STREQUAL \"\" OR NOT FORCEIO_CDT_ROOT)\n"
-                                    "   find_package(forceio.cdt)\n"
+                                    "if(CODEX_CDT_ROOT STREQUAL \"\" OR NOT CODEX_CDT_ROOT)\n"
+                                    "   find_package(codex.cdt)\n"
                                     "endif()\n\n"
                                     "ExternalProject_Add(\n"
                                     "   @_project\n"
                                     "   SOURCE_DIR ${CMAKE_SOURCE_DIR}/src\n"
                                     "   BINARY_DIR ${CMAKE_BINARY_DIR}/@\n"
-                                    "   CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${FORCEIO_CDT_ROOT}/lib/cmake/forceio.cdt/EosioWasmToolchain.cmake\n"
+                                    "   CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CODEX_CDT_ROOT}/lib/cmake/codex.cdt/EosioWasmToolchain.cmake\n"
                                     "   UPDATE_COMMAND \"\"\n"
                                     "   PATCH_COMMAND \"\"\n"
                                     "   TEST_COMMAND \"\"\n"
@@ -101,7 +101,7 @@ struct project {
 
    const std::string readme_bare = " --- @ Project ---\n\n"
                                    " - How to Build -\n"
-                                   "   - run the command 'forceio-cpp -abigen -o @.wasm @.cpp'\n";
+                                   "   - run the command 'codex-cpp -abigen -o @.wasm @.cpp'\n";
 
    std::string replace_name( const std::string& in ) {
       std::stringstream ss;
@@ -185,9 +185,9 @@ struct project {
 int main(int argc, const char **argv) {
 
    cl::SetVersionPrinter([](llvm::raw_ostream& os) {
-        os << "forceio-init version " << "@VERSION_FULL@" << "\n";
+        os << "codex-init version " << "@VERSION_FULL@" << "\n";
   });
-   cl::OptionCategory cat("forceio-init", "generates an eosio smart contract project");
+   cl::OptionCategory cat("codex-init", "generates an eosio smart contract project");
    
    cl::opt<bool> bare_opt(
       "bare",
@@ -203,7 +203,7 @@ int main(int argc, const char **argv) {
       cl::desc("directory to place the project"),
       cl::cat(cat));
 
-   cl::ParseCommandLineOptions(argc, argv, std::string("forceio-proj"));
+   cl::ParseCommandLineOptions(argc, argv, std::string("codex-proj"));
    try {
       if (!std::regex_match(project_name, std::regex("^[_a-zA-Z][_a-zA-Z0-9]*$"))) {
          throw std::runtime_error("ERROR: invalid identifier: " + project_name + " (ensure that it is a valid C++ identifier)");

@@ -6,7 +6,7 @@ ExternalProject_Add(
   EosioWasmLibraries
   SOURCE_DIR "${CMAKE_SOURCE_DIR}/libraries"
   BINARY_DIR "${CMAKE_BINARY_DIR}/libraries"
-  CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_BINARY_DIR}/lib/cmake/forceio.cdt/EosioWasmToolchain.cmake -DFORCEIO_CDT_BIN=${CMAKE_BINARY_DIR}/lib/cmake/forceio.cdt/ -DBASE_BINARY_DIR=${CMAKE_BINARY_DIR} -D__APPLE=${APPLE}
+  CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_BINARY_DIR}/lib/cmake/codex.cdt/EosioWasmToolchain.cmake -DCODEX_CDT_BIN=${CMAKE_BINARY_DIR}/lib/cmake/codex.cdt/ -DBASE_BINARY_DIR=${CMAKE_BINARY_DIR} -D__APPLE=${APPLE}
   UPDATE_COMMAND ""
   PATCH_COMMAND  ""
   TEST_COMMAND   ""

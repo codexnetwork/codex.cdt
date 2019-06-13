@@ -294,22 +294,22 @@ if (NOT EMSCRIPTEN)
       DEPENDS ${name}
     )
   endfunction()
-  wabt_executable(forceio-pp src/tools/postpass.cc)
-  add_custom_command( TARGET forceio-pp POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
-  add_custom_command( TARGET forceio-pp POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:forceio-pp> ${CMAKE_BINARY_DIR}/bin/ )
+  wabt_executable(codex-pp src/tools/postpass.cc)
+  add_custom_command( TARGET codex-pp POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
+  add_custom_command( TARGET codex-pp POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:codex-pp> ${CMAKE_BINARY_DIR}/bin/ )
 
   # wat2wasm
-  wabt_executable(forceio-wast2wasm src/tools/wat2wasm.cc)
-  add_custom_command( TARGET forceio-wast2wasm POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
-  add_custom_command( TARGET forceio-wast2wasm POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:forceio-wast2wasm> ${CMAKE_BINARY_DIR}/bin/ )
+  wabt_executable(codex-wast2wasm src/tools/wat2wasm.cc)
+  add_custom_command( TARGET codex-wast2wasm POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
+  add_custom_command( TARGET codex-wast2wasm POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:codex-wast2wasm> ${CMAKE_BINARY_DIR}/bin/ )
 
   # wast2json
   wabt_executable(wast2json src/tools/wast2json.cc)
 
   # wasm2wat
-  wabt_executable(forceio-wasm2wast src/tools/wasm2wat.cc)
-  add_custom_command( TARGET forceio-wasm2wast POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
-  add_custom_command( TARGET forceio-wasm2wast POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:forceio-wasm2wast> ${CMAKE_BINARY_DIR}/bin/ )
+  wabt_executable(codex-wasm2wast src/tools/wasm2wat.cc)
+  add_custom_command( TARGET codex-wasm2wast POST_BUILD COMMAND mkdir -p ${CMAKE_BINARY_DIR}/bin )
+  add_custom_command( TARGET codex-wasm2wast POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:codex-wasm2wast> ${CMAKE_BINARY_DIR}/bin/ )
 
   # wasm2c
   wabt_executable(wasm2c
