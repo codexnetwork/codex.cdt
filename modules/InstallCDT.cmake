@@ -3,7 +3,7 @@ macro( eosio_clang_install file )
    set(BINARY_DIR ${CMAKE_BINARY_DIR}/eosio_llvm/bin)
    add_custom_command( TARGET EosioClang POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${BINARY_DIR}/${file} ${CMAKE_BINARY_DIR}/bin/ )
    install(FILES ${BINARY_DIR}/${file}
-      DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+      DESTINATION ${CDT_INSTALL_PREFIX}/bin
       PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 endmacro( eosio_clang_install )
 
@@ -12,32 +12,35 @@ macro( eosio_clang_install_and_symlink file symlink )
    add_custom_command( TARGET EosioClang POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${BINARY_DIR}/${file} ${CMAKE_BINARY_DIR}/bin/ )
    add_custom_command( TARGET EosioClang POST_BUILD COMMAND cd ${CMAKE_BINARY_DIR}/bin && ln -sf ${file} ${symlink} )
    install(FILES ${BINARY_DIR}/${file}
-      DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+      DESTINATION ${CDT_INSTALL_PREFIX}/bin
       PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   install(CODE "execute_process( COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_INSTALL_PREFIX}/bin)")
+   install(CODE "execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink ${CDT_INSTALL_PREFIX}/bin/${file} ${CMAKE_INSTALL_PREFIX}/bin/${symlink})")
 endmacro( eosio_clang_install_and_symlink )
 
 macro( eosio_tool_install file )
    set(BINARY_DIR ${CMAKE_BINARY_DIR}/tools/bin)
    add_custom_command( TARGET EosioTools POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${BINARY_DIR}/${file} ${CMAKE_BINARY_DIR}/bin/ )
    install(FILES ${BINARY_DIR}/${file}
-      DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+      DESTINATION ${CDT_INSTALL_PREFIX}/bin
       PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 endmacro( eosio_tool_install )
 
 macro( eosio_tool_install_and_symlink file symlink )
    set(BINARY_DIR ${CMAKE_BINARY_DIR}/tools/bin)
    add_custom_command( TARGET EosioTools POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${BINARY_DIR}/${file} ${CMAKE_BINARY_DIR}/bin/ )
-   add_custom_command( TARGET EosioTools POST_BUILD COMMAND cd ${CMAKE_BINARY_DIR}/bin && ln -sf ${file} ${symlink} )
    install(FILES ${BINARY_DIR}/${file}
-      DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+      DESTINATION ${CDT_INSTALL_PREFIX}/bin
       PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   install(CODE "execute_process( COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_INSTALL_PREFIX}/bin)")
+   install(CODE "execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink ${CDT_INSTALL_PREFIX}/bin/${file} ${CMAKE_INSTALL_PREFIX}/bin/${symlink})")
 endmacro( eosio_tool_install_and_symlink )
 
 macro( eosio_libraries_install)
    execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/lib)
    execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/include)
-   install(DIRECTORY ${CMAKE_BINARY_DIR}/lib/ DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-   install(DIRECTORY ${CMAKE_BINARY_DIR}/include/ DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+   install(DIRECTORY ${CMAKE_BINARY_DIR}/lib/ DESTINATION ${CDT_INSTALL_PREFIX}/lib)
+   install(DIRECTORY ${CMAKE_BINARY_DIR}/include/ DESTINATION ${CDT_INSTALL_PREFIX}/include)
 endmacro( eosio_libraries_install )
 
 eosio_clang_install_and_symlink(llvm-ranlib codex-ranlib)
@@ -55,15 +58,17 @@ eosio_clang_install(ld.lld)
 eosio_clang_install(ld64.lld)
 eosio_clang_install(clang-7)
 eosio_clang_install(wasm-ld)
-eosio_tool_install(codex-pp)
-eosio_tool_install(codex-wast2wasm)
-eosio_tool_install(codex-wasm2wast)
-eosio_tool_install(codex-cc)
-eosio_tool_install(codex-cpp)
-eosio_tool_install(codex-ld)
-eosio_tool_install(codex-abigen)
-eosio_tool_install(codex-abidiff)
-eosio_tool_install(codex-init)
+
+eosio_tool_install_and_symlink(codex-pp codex-pp)
+eosio_tool_install_and_symlink(codex-wast2wasm codex-wast2wasm)
+eosio_tool_install_and_symlink(codex-wasm2wast codex-wasm2wast)
+eosio_tool_install_and_symlink(codex-cc codex-cc)
+eosio_tool_install_and_symlink(codex-cpp codex-cpp)
+eosio_tool_install_and_symlink(codex-ld codex-ld)
+eosio_tool_install_and_symlink(codex-abigen codex-abigen)
+eosio_tool_install_and_symlink(codex-abidiff codex-abidiff)
+eosio_tool_install_and_symlink(codex-init codex-init)
+
 eosio_clang_install(../lib/LLVMEosioApply${CMAKE_SHARED_LIBRARY_SUFFIX})
 eosio_clang_install(../lib/LLVMEosioSoftfloat${CMAKE_SHARED_LIBRARY_SUFFIX})
 eosio_clang_install(../lib/eosio_plugin${CMAKE_SHARED_LIBRARY_SUFFIX})
