@@ -46,56 +46,20 @@
    txtbld=$(tput bold)
    bldred=${txtbld}$(tput setaf 1)
    txtrst=$(tput sgr0)
-
-   create_symlink() {
-      pushd /usr/local/bin &> /dev/null
-      ln -sf ../codex.cdt/bin/$1 $2
-      popd &> /dev/null
-   }
-
-   install_symlinks() {
-      printf "\\n\\tInstalling CODEX.CDT Binary Symlinks\\n\\n"
-      create_symlink "llvm-ranlib codex-ranlib"
-      create_symlink "llvm-ar codex-ar"
-      create_symlink "llvm-objdump codex-objdump"
-      create_symlink "llvm-readelf codex-readelf"
-      create_symlink "codex-cc codex-cc"
-      create_symlink "codex-cpp codex-cpp"
-      create_symlink "codex-ld codex-ld"
-      create_symlink "codex-pp codex-pp"
-      create_symlink "codex-init codex-init"
-      create_symlink "codex-abigen codex-abigen"
-      create_symlink "codex-abidiff codex-abidiff"
-      create_symlink "codex-wasm2wast codex-wasm2wast"
-      create_symlink "codex-wast2wasm codex-wast2wasm"
-   }
    
-   create_cmake_symlink() {
-      mkdir -p /usr/local/lib/cmake/codex.cdt
-      pushd /usr/local/lib/cmake/codex.cdt &> /dev/null
-      ln -sf ../../../codex.cdt/lib/cmake/codex.cdt/$1 $1
-      popd &> /dev/null
-   }
    if [ ! -d "${BUILD_DIR}" ]; then
       printf "\\n\\tError, build.sh has not ran.  Please run ./build.sh first!\\n\\n"
       exit -1
    fi
-
-   if ! pushd "${BUILD_DIR}"
-   then
+   if ! pushd "${BUILD_DIR}"; then
       printf "Unable to enter build directory %s.\\n Exiting now.\\n" "${BUILD_DIR}"
       exit 1;
    fi
-   
-   if ! make install
-   then
+   if ! make install; then
       printf "\\n\\t>>>>>>>>>>>>>>>>>>>> MAKE installing CODEX has exited with the above error.\\n\\n"
       exit -1
    fi
    popd &> /dev/null 
-
-   install_symlinks   
-   create_cmake_symlink "codex.cdt-config.cmake"
 
    printf "\n\n${bldred}\t   __________  ____  _______  __   ________   \n"
    printf "\t  / ____/ __ \/ __ \/ ____/ |/ /  /  _/ __ \  \n"
